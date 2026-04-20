@@ -1,0 +1,218 @@
+.auth-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  padding: 20px;
+}
+
+.auth-card {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+.auth-visual {
+  flex: 1;
+  background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800') center/cover;
+  position: relative;
+  display: none; /* Hidden on mobile */
+}
+
+@media (min-width: 768px) { .auth-visual { display: block; } }
+
+.visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  color: white;
+}
+
+.auth-form-container {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-toggle {
+  display: flex;
+  background: #f8fafc;
+  padding: 5px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.auth-toggle button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #64748b;
+  transition: 0.3s;
+}
+
+.auth-toggle button.active {
+  background: white;
+  color: var(--accent);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-form h3 { margin-bottom: 10px; font-size: 1.5rem; }
+
+.auth-form input, .auth-form select {
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  outline: none;
+}
+
+.btn-auth {
+  background: var(--accent);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fix for the top two inputs */
+.input-row {
+  display: flex;
+  gap: 20px; /* This creates the professional separation */
+  width: 100%;
+}
+
+.input-row input, .input-row select {
+  flex: 1; /* Makes them take equal width */
+  min-width: 0; /* Prevents overflow */
+}
+
+/* Custom Checkbox Styling */
+.terms-container {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  /* user-select: none; */
+  color: #64748b;
+}
+
+/* Hide default checkbox */
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create custom checkmark box */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+/* Hover and Checked states */
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #e2e8f0;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Create the actual checkmark (white L-shape) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.label-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* This targets the container holding the help text */
+.auth-footer-text {
+  margin-top: 30px; /* This creates the professional gap you need */
+  text-align: center;
+  border-top: 1px solid #f1f5f9; /* Optional: a very subtle line to separate it */
+  padding-top: 20px;
+}
+
+.auth-footer-text p {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.auth-footer-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Ensure the button itself has a clear margin-top if needed */
+.btn-auth {
+  margin-top: 10px;
+  /* ... rest of your existing button code ... */
+}

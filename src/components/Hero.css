@@ -1,0 +1,114 @@
+.hero-container {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #60a5fa, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.search-glass {
+  margin-top: 40px;
+  background: var(--glass);
+  /* backdrop-filter: blur(12px); */
+  padding: 10px;
+  border-radius: 16px;
+  display: flex;
+  gap: 10px;
+  max-width: 800px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.search-glass input, .search-glass select {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.btn-search {
+  background: var(--accent);
+  color: white;
+  padding: 0 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-search:hover {
+  transform: scale(1.05);
+}
+
+/* Container for the stats below the search box */
+.hero-stats-container {
+  margin-top: 60px; /* Moves it down away from the input */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 5px;
+  font-variant-numeric: tabular-nums; /* Prevents text from jumping while counting */
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+
+/* A clean vertical line between stats */
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Animation for the whole section */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero-stats-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .stat-divider {
+    display: none;
+  }
+}
