@@ -1,13 +1,33 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [role, setRole] = useState("I am a Job Seeker");
+  const navigate = useNavigate();
+
+  const handleAuth = (e) => {
+    e.preventDefault();
+
+    if (!isLogin) {
+      // REGISTRATION
+      alert(`Account created as ${role}! Now please login.`);
+      setIsLogin(true);
+    } else {
+      // LOGIN
+      // Now the role state will be correctly captured from the visible select box
+      if (role === "I am an Employer") {
+        navigate("/employer-dashboard");
+      } else {
+        navigate("/seeker-dashboard");
+      }
+    }
+  };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
-        {/* Left Side: Visual/Branding Section */}
         <div className="auth-visual">
           <div className="visual-overlay">
             <h2>{isLogin ? "Welcome Back!" : "Join the Future."}</h2>
@@ -15,7 +35,6 @@ const Auth = () => {
           </div>
         </div>
 
-        {/* Right Side: Form Content Section */}
         <div className="auth-form-container">
           <div className="auth-toggle">
             <button
@@ -32,34 +51,32 @@ const Auth = () => {
             </button>
           </div>
 
-          {isLogin ? (
-            /* Login Form */
-            <form className="auth-form fade-in">
-              <h3>Login to your account</h3>
-              <input type="email" placeholder="Email Address" required />
-              <input type="password" placeholder="Password" required />
-              <button type="submit" className="btn-auth">
-                Sign In
-              </button>
-            </form>
-          ) : (
-            /* Registration Form */
-            <form className="auth-form fade-in">
-              <h3>Create an account</h3>
+          <form className="auth-form fade-in" onSubmit={handleAuth}>
+            <h3>{isLogin ? "Login to your account" : "Create an account"}</h3>
 
-              {/* Spaced Input Row */}
-              <div className="input-row">
+            {/* INNOVATION: Always show the role selector or keep it visible on login */}
+            <div className="input-row">
+              {!isLogin && (
                 <input type="text" placeholder="Full Name" required />
-                <select>
+              )}
+
+              <div className="role-select-wrapper">
+                <label className="input-label">Signing in as:</label>
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="role-select"
+                >
                   <option>I am a Job Seeker</option>
                   <option>I am an Employer</option>
                 </select>
               </div>
+            </div>
 
-              <input type="email" placeholder="Email Address" required />
-              <input type="password" placeholder="Password" required />
+            <input type="email" placeholder="Email Address" required />
+            <input type="password" placeholder="Password" required />
 
-              {/* Innovative Custom Checkbox */}
+            {!isLogin && (
               <div className="terms-container">
                 <label className="custom-checkbox">
                   <input type="checkbox" required />
@@ -69,12 +86,12 @@ const Auth = () => {
                   </span>
                 </label>
               </div>
+            )}
 
-              <button type="submit" className="btn-auth">
-                Create Account
-              </button>
-            </form>
-          )}
+            <button type="submit" className="btn-auth">
+              {isLogin ? "Sign In" : "Create Account"}
+            </button>
+          </form>
 
           <div className="auth-footer-text">
             <p>
