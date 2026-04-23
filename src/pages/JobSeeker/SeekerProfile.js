@@ -7,10 +7,13 @@ const SeekerProfile = () => {
 
   return (
     <div className="seeker-page-wrapper">
-      {/* SHARED NAVBAR */}
       <nav className="top-nav">
         <div className="nav-container">
-          <div className="nav-logo">
+          <div
+            className="nav-logo"
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+          >
             RW-<span>JOBS</span>
           </div>
           <div className="nav-links">
@@ -24,55 +27,130 @@ const SeekerProfile = () => {
               Profile
             </Link>
           </div>
-          <button className="logout-text-btn" onClick={() => navigate("/auth")}>
+          <button className="logout-text-btn" onClick={() => navigate("/")}>
             Logout
           </button>
         </div>
       </nav>
 
       <main className="seeker-wrapper">
-        <div className="profile-grid">
-          {/* LEFT SIDE: PERSONAL INFO CARD */}
-          <aside className="profile-card-sidebar">
-            <div className="profile-avatar-large">IM</div>
-            <h2 className="profile-name">Innocent Manzi</h2>
-            <p className="profile-title">Software Engineer | Health Tech</p>
-            <button className="edit-profile-btn">Edit Profile</button>
-            <div className="profile-meta">
-              <span>📍 Kigali, Rwanda</span>
-              <span>📧 innocent@example.com</span>
+        <div className="profile-innovative-grid">
+          {/* LEFT COLUMN: IDENTITY CARD */}
+          <aside className="identity-column">
+            <div className="identity-card-premium">
+              <div className="avatar-container">
+                <div className="profile-avatar-large">IM</div>
+                <div className="status-indicator-online"></div>
+              </div>
+              <h2 className="profile-name">Innocent Manzi</h2>
+              <p className="profile-title">Fullstack Engineer | Health Tech</p>
+
+              <div className="profile-location">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Kigali, Rwanda</span>
+              </div>
+
+              <button className="innovative-btn-edit">Edit Profile</button>
+
+              {/* <div className="social-links-minimal">
+                <button className="social-icon">Li</button>
+                <button className="social-icon">Gh</button>
+                <button className="social-icon">Tw</button>
+              </div> */}
+
+              <div className="profile-completeness">
+                <div className="completeness-label">
+                  <span>Profile Strength</span>
+                  <span>85%</span>
+                </div>
+                <div className="progress-bar-bg">
+                  <div
+                    className="progress-bar-fill"
+                    style={{ width: "85%" }}
+                  ></div>
+                </div>
+              </div>
             </div>
           </aside>
 
-          {/* RIGHT SIDE: DETAILED CONTENT */}
-          <div className="profile-details-area">
-            <section className="profile-card-main">
-              <h3>Professional Bio</h3>
-              <p className="bio-text">
+          {/* RIGHT COLUMN: DETAILED INSIGHTS */}
+          <div className="details-column">
+            {/* PERSONAL BIO */}
+            <section className="glass-profile-section">
+              <h3 className="section-title-premium">Professional Narrative</h3>
+              <p className="bio-text-refined">
                 Passionate developer focused on creating impactful digital
-                solutions in Rwanda's tech ecosystem. Specializing in Health
-                Informatics and full-stack development.
+                solutions in Rwanda's tech ecosystem. With over 4 years of
+                experience, I specialize in Health Informatics and building
+                scalable full-stack applications that solve real-world community
+                problems.
               </p>
             </section>
 
-            <section className="profile-card-main">
-              <h3>Core Stack</h3>
-              <div className="skill-tags">
-                <span className="skill-badge">React</span>
-                <span className="skill-badge">Node.js</span>
-                <span className="skill-badge">MongoDB</span>
-                <span className="skill-badge">Express</span>
+            {/* CORE STACK WITH CATEGORIES */}
+            <section className="glass-profile-section">
+              <h3 className="section-title-premium">Technical Core</h3>
+              <div className="skill-category-group">
+                <div className="skill-cat">
+                  <label>Frontend</label>
+                  <div className="skill-tags">
+                    <span className="skill-badge-premium">React</span>
+                    <span className="skill-badge-premium">Next.js</span>
+                    <span className="skill-badge-premium">Tailwind</span>
+                  </div>
+                </div>
+                <div className="skill-cat">
+                  <label>Backend</label>
+                  <div className="skill-tags">
+                    <span className="skill-badge-premium">Node.js</span>
+                    <span className="skill-badge-premium">PostgreSQL</span>
+                    <span className="skill-badge-premium">GraphQL</span>
+                  </div>
+                </div>
               </div>
             </section>
 
-            <section className="profile-card-main">
-              <h3>Documents</h3>
-              <div className="document-row">
-                <div className="doc-info">
-                  <span className="doc-icon">📄</span>
-                  <span className="doc-name">Innocent_CV_2026.pdf</span>
+            {/* EXPERIENCE / HISTORY */}
+            <section className="glass-profile-section">
+              <h3 className="section-title-premium">Career Milestone</h3>
+              <div className="milestone-item">
+                <div className="milestone-logo">BK</div>
+                <div className="milestone-info">
+                  <h4>Senior Developer</h4>
+                  <p>Bank of Kigali • 2024 - Present</p>
                 </div>
-                <button className="action-btn-download">Download CV</button>
+              </div>
+              <div className="milestone-item">
+                <div className="milestone-logo">IH</div>
+                <div className="milestone-info">
+                  <h4>Junior Engineer</h4>
+                  <p>Irembo • 2022 - 2024</p>
+                </div>
+              </div>
+            </section>
+
+            {/* DOCUMENTS SECTION */}
+            <section className="glass-profile-section">
+              <h3 className="section-title-premium">Certified Documents</h3>
+              <div className="document-card-innovative">
+                <div className="doc-icon-box">PDF</div>
+                <div className="doc-meta-info">
+                  <span className="doc-filename">Innocent_CV_2026.pdf</span>
+                  <span className="doc-filesize">
+                    1.2 MB • Updated 2 days ago
+                  </span>
+                </div>
+                <button className="download-btn-circle">↓</button>
               </div>
             </section>
           </div>

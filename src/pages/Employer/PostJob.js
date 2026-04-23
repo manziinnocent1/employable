@@ -7,10 +7,13 @@ const PostJob = () => {
 
   return (
     <div className="employer-page-wrapper">
-      {/* SHARED TOP NAVIGATION */}
       <nav className="top-nav">
         <div className="nav-container">
-          <div className="nav-logo">
+          <div
+            className="nav-logo"
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+          >
             RW-<span>JOBS</span>
           </div>
           <div className="nav-links">
@@ -24,71 +27,147 @@ const PostJob = () => {
               Applicants
             </Link>
           </div>
-          <button className="logout-text-btn" onClick={() => navigate("/auth")}>
+          <button className="logout-text-btn" onClick={() => navigate("/")}>
             Logout
           </button>
         </div>
       </nav>
 
-      <main className="form-page-container">
-        <div className="glass-form-card innovative-shadow">
-          <div className="form-header">
-            <h2>
-              Post a <span className="highlight">New Opportunity</span>
-            </h2>
-            <p>Connect with Rwanda's most driven professionals.</p>
+      <main className="employer-wrapper">
+        <div className="innovative-form-layout">
+          {/* MAIN FORM AREA */}
+          <div className="form-glass-card">
+            <header className="form-header-innovative">
+              <h1>
+                Launch a <span className="highlight">New Role</span>
+              </h1>
+              <p>
+                Attract the best talent by providing clear and detailed
+                information.
+              </p>
+            </header>
+
+            <form className="structured-form">
+              {/* SECTION 1 */}
+              <div className="form-section">
+                <div className="section-indicator">01</div>
+                <div className="section-content">
+                  <h3>Basic Information</h3>
+                  <div className="input-field full">
+                    <label>Job Title</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Senior Backend Engineer"
+                      required
+                    />
+                  </div>
+                  <div className="input-grid-2">
+                    <div className="input-field">
+                      <label>Category</label>
+                      <select>
+                        <option>Engineering</option>
+                        <option>Design</option>
+                        <option>Healthcare</option>
+                      </select>
+                    </div>
+                    <div className="input-field">
+                      <label>Work Type</label>
+                      <select>
+                        <option>On-site (Kigali)</option>
+                        <option>Remote</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 2 */}
+              <div className="form-section">
+                <div className="section-indicator">02</div>
+                <div className="section-content">
+                  <h3>Compensation & Timeline</h3>
+                  <div className="input-grid-2">
+                    <div className="input-field">
+                      <label>Salary Range (Monthly)</label>
+                      <div className="range-inputs">
+                        <input type="number" placeholder="Min" />
+                        <input type="number" placeholder="Max" />
+                      </div>
+                    </div>
+                    <div className="input-field">
+                      <label>Application Deadline</label>
+                      <input type="date" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 3 */}
+              <div className="form-section full-width-section">
+                <div className="section-indicator">03</div>
+                <div className="section-content">
+                  <h3>Requirements & Details</h3>
+                  <div className="input-field-expanding">
+                    <label>Job Description</label>
+                    {/* Reduced rows from 8 to 4 */}
+                    <textarea
+                      rows="4"
+                      placeholder="Describe the daily impact of this role and the unique culture of your team..."
+                    ></textarea>
+                  </div>
+                  <div className="input-field-expanding">
+                    <label>Key Requirements (One per line)</label>
+                    {/* Reduced rows from 6 to 3 */}
+                    <textarea
+                      rows="3"
+                      placeholder="• 5+ years of Experience with React..."
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+
+              {/* INNOVATIVE ACTION BAR - FIXED ALIGNMENT */}
+              <div className="form-action-bar-innovative">
+                <button type="button" className="btn-ghost">
+                  Save as Draft
+                </button>
+                <div className="btn-group-right">
+                  <button
+                    type="button"
+                    className="btn-outline"
+                    onClick={() => navigate(-1)}
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" className="btn-primary-launch">
+                    Publish Opportunity
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
 
-          <form className="grid-form">
-            <div className="input-box full">
-              <label>Job Title</label>
-              <input
-                type="text"
-                placeholder="e.g. Senior Backend Engineer"
-                required
-              />
+          {/* SIDEBAR TOOLS */}
+          <aside className="form-sidebar-innovative">
+            <div className="tip-card-glass">
+              <span className="tip-icon">💡</span>
+              <h4>Posting Tip</h4>
+              <p>
+                Jobs with clear salary ranges get <strong>40% more</strong>{" "}
+                qualified applicants.
+              </p>
             </div>
 
-            <div className="input-box">
-              <label>Category</label>
-              <select>
-                <option>Engineering</option>
-                <option>Healthcare</option>
-                <option>Education</option>
-                <option>Finance</option>
-              </select>
+            <div className="preview-card-dark">
+              <h4>Live Preview</h4>
+              <div className="preview-skeleton">
+                <div className="skel-line title"></div>
+                <div className="skel-line text"></div>
+                <div className="skel-badge"></div>
+              </div>
+              <p className="skel-footer">Visible to 12,000+ job seekers</p>
             </div>
-
-            <div className="input-box">
-              <label>Work Type</label>
-              <select>
-                <option>On-site (Kigali)</option>
-                <option>Remote</option>
-                <option>Hybrid</option>
-              </select>
-            </div>
-
-            <div className="input-box full">
-              <label>Description & Requirements</label>
-              <textarea
-                rows="6"
-                placeholder="What makes this role unique? Detail the skills and experience required."
-              ></textarea>
-            </div>
-
-            <div className="form-actions">
-              <button
-                type="button"
-                className="secondary-btn"
-                onClick={() => navigate("/employer-dashboard")}
-              >
-                Cancel
-              </button>
-              <button type="submit" className="prime-btn">
-                Launch Listing
-              </button>
-            </div>
-          </form>
+          </aside>
         </div>
       </main>
     </div>
