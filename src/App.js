@@ -13,7 +13,14 @@ import EmployerHome from "./pages/Employer/EmployerHome";
 import PostJob from "./pages/Employer/PostJob";
 import ApplicantManager from "./pages/Employer/ApplicantManager";
 
+// Admin Imports
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import UserManagement from "./pages/Admin/UserManagement";
+import JobModeration from "./pages/Admin/JobModeration";  
+import PlatformAnalytics from "./pages/Admin/PlatformAnalytics";
+
 import "./App.css";
+// import PlatformAnalytics from "./pages/Admin/PlatformAnalytics";
 
 function App() {
   return (
@@ -35,6 +42,12 @@ function App() {
           path="/employer/manage-applicants"
           element={<ApplicantManager />}
         />
+
+        {/* Admin Route */}
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/users" element={<UserManagement />} />
+        <Route path="/admin/moderation" element={<JobModeration />} />
+        <Route path="/admin/analytics" element={<PlatformAnalytics />} />
 
         {/* Fallback for 404 - Optional but professional */}
         <Route

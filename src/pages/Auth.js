@@ -15,9 +15,10 @@ const Auth = () => {
       alert(`Account created as ${role}! Now please login.`);
       setIsLogin(true);
     } else {
-      // LOGIN
-      // Now the role state will be correctly captured from the visible select box
-      if (role === "I am an Employer") {
+      // LOGIN - Updated logic to include Admin
+      if (role === "I am an Admin") {
+        navigate("/admin-dashboard");
+      } else if (role === "I am an Employer") {
         navigate("/employer-dashboard");
       } else {
         navigate("/seeker-dashboard");
@@ -54,7 +55,6 @@ const Auth = () => {
           <form className="auth-form fade-in" onSubmit={handleAuth}>
             <h3>{isLogin ? "Login to your account" : "Create an account"}</h3>
 
-            {/* INNOVATION: Always show the role selector or keep it visible on login */}
             <div className="input-row">
               {!isLogin && (
                 <input type="text" placeholder="Full Name" required />
@@ -69,6 +69,8 @@ const Auth = () => {
                 >
                   <option>I am a Job Seeker</option>
                   <option>I am an Employer</option>
+                  {/* ADDED ADMIN OPTION */}
+                  <option>I am an Admin</option>
                 </select>
               </div>
             </div>
