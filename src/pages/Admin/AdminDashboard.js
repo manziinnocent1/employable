@@ -1,53 +1,48 @@
-import React, { useState } from "react"; // Added useState
+import React, { useState } from "react";
+import UserManagement from "./UserManagement";
+import JobModeration from "./JobModeration";
+import PlatformAnalytics from "./PlatformAnalytics"; // This connects the two files
 import "./Admin.css";
 
 const AdminDashboard = () => {
-  // Logic to track which page is currently viewed
   const [activeTab, setActiveTab] = useState("Overview");
 
-  // Mock data for the Management & Moderation views
-  const users = [
+  // New logic for logout
+  const handleLogout = () => {
+    // This will redirect to the main landing page/login page
+    window.location.href = "/";
+  };
+
+  const platformEvents = [
     {
       id: 1,
-      name: "Jean Paul",
-      role: "Job Seeker",
-      email: "jp@nexus.rw",
-      status: "active",
+      initial: "BK",
+      name: "Bank of Kigali",
+      action: "updated corporate profile",
+      time: "2 mins ago",
+      type: "update",
     },
     {
       id: 2,
-      name: "Bank of Kigali",
-      role: "Employer",
-      email: "hr@bk.rw",
-      status: "verified",
+      initial: "IM",
+      name: "Irembo",
+      action: "posted 3 new job listings",
+      time: "15 mins ago",
+      type: "post",
     },
     {
       id: 3,
+      initial: "AU",
       name: "Alice Umutoni",
-      role: "Job Seeker",
-      email: "alice@gmail.com",
-      status: "pending",
-    },
-  ];
-
-  const pendingJobs = [
-    {
-      id: 101,
-      title: "Frontend Developer",
-      company: "Irembo",
-      date: "Just now",
-    },
-    {
-      id: 102,
-      title: "Financial Analyst",
-      company: "MTN Rwanda",
-      date: "2h ago",
+      action: "verified her professional skills",
+      time: "1h ago",
+      type: "verification",
     },
   ];
 
   return (
     <div className="admin-container">
-      {/* INNOVATIVE TOP NAVIGATION */}
+      {/* HEADER REMAINS THE SAME */}
       <header className="admin-navbar-wrapper">
         <nav className="admin-navbar">
           <div className="nav-left">
@@ -59,208 +54,115 @@ const AdminDashboard = () => {
 
           <div className="nav-center">
             <div className="nav-links-container">
-              <button
-                className={`nav-link ${activeTab === "Overview" ? "active" : ""}`}
-                onClick={() => setActiveTab("Overview")}
-              >
-                Overview
-              </button>
-              <button
-                className={`nav-link ${activeTab === "Management" ? "active" : ""}`}
-                onClick={() => setActiveTab("Management")}
-              >
-                Management
-              </button>
-              <button
-                className={`nav-link ${activeTab === "Moderation" ? "active" : ""}`}
-                onClick={() => setActiveTab("Moderation")}
-              >
-                Moderation
-              </button>
-              <button
-                className={`nav-link ${activeTab === "Analytics" ? "active" : ""}`}
-                onClick={() => setActiveTab("Analytics")}
-              >
-                Analytics
-              </button>
+              {["Overview", "Management", "Moderation", "Analytics"].map(
+                (tab) => (
+                  <button
+                    key={tab}
+                    className={`nav-link ${activeTab === tab ? "active" : ""}`}
+                    onClick={() => setActiveTab(tab)}
+                  >
+                    {tab}
+                  </button>
+                ),
+              )}
             </div>
           </div>
 
           <div className="nav-right">
-            <div className="nav-utility">
-              <div className="user-profile-widget">
-                <div className="avatar">SA</div>
-                <div className="user-info">
-                  <span className="user-name">System Admin</span>
-                  <span className="user-role">Superuser</span>
-                </div>
-                <button className="logout-btn" title="Logout">
-                  <span className="logout-icon">⏻</span>
-                </button>
+            {/* Added the innovative logout action within the profile widget */}
+            <div className="user-profile-widget-innovative">
+              <div className="avatar">SA</div>
+              <div className="user-info">
+                <span className="user-name">System Admin</span>
+                <span className="user-role">Superuser</span>
               </div>
+              <div className="v-divider-nav"></div>
+              <button
+                className="logout-action-btn"
+                onClick={handleLogout}
+                title="Logout"
+              >
+                <span className="logout-icon">⏻</span>
+              </button>
             </div>
           </div>
         </nav>
       </header>
 
       <main className="admin-main-content">
-        {/* PAGE 1: OVERVIEW (Your existing bento grid) */}
+        {/* BLOCK 1: OVERVIEW */}
         {activeTab === "Overview" && (
           <div className="tab-fade-in">
             <header className="dashboard-header">
               <div className="header-left">
-                <h1>System Dashboard</h1>
+                <h1>Platform Insights</h1>
                 <div className="platform-pill">
                   <span className="pulse-dot"></span>
-                  Live Cluster: Kigali_HQ_01
+                  Kigali_HQ_01 Cluster Active
                 </div>
-              </div>
-              <div className="header-right">
-                <button className="btn-glass">Download CSV</button>
-                <button className="btn-primary-action">
-                  Intelligence Report
-                </button>
               </div>
             </header>
 
             <section className="dashboard-intro">
               <p>
-                Welcome back, Admin. Your system is currently operating at{" "}
-                <strong>peak efficiency</strong>. We've observed a 12% surge in
-                talent acquisition this month. Review your security alerts below
-                and manage incoming job listings for the Rwandan market.
+                Welcome back. The platform is seeing a{" "}
+                <strong>12% surge</strong> in talent acquisition. Below is the
+                real-time activity and market distribution across Rwanda.
               </p>
             </section>
 
-            <div className="bento-layout">
-              <div className="bento-card stat-main compact">
-                <div className="card-head">
-                  <label>Total Users</label>
-                  <div className="growth-tag">+12.4%</div>
+            <div className="centered-content-container">
+              <div className="stats-row-centered">
+                <div className="bento-card-compact">
+                  <div className="card-label">Total Active Talent</div>
+                  <div className="stat-flex">
+                    <span className="big-number">1,240</span>
+                    <span className="growth-tag-innovative">+12.4%</span>
+                  </div>
                 </div>
-                <div className="big-number">1,240</div>
-              </div>
 
-              <div className="bento-card stat-secondary compact">
-                <label>Active Jobs</label>
-                <div className="mid-number">85</div>
-                <div className="mini-progress">
-                  <div className="progress-fill" style={{ width: "75%" }}></div>
+                <div className="bento-card-compact">
+                  <div className="card-label">Open Opportunities</div>
+                  <div className="stat-flex">
+                    <span className="big-number">85</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="bento-card stat-urgent compact">
-                <label>Security Alerts</label>
-                <div className="mid-number color-red">03</div>
-                <button className="btn-link-action">Resolve Issues →</button>
-              </div>
-
-              <div className="bento-card activity-feed span-2">
-                <div className="card-header-flex">
+              <div className="bento-card activity-feed-centered">
+                <div className="card-header-between">
                   <h3>Recent Platform Events</h3>
-                  <button className="text-btn">View All</button>
+                  <button className="minimal-link-btn">View Full Audit</button>
                 </div>
-                <div className="event-timeline">
-                  <div className="event-row">
-                    <div className="event-icon bg-blue">BK</div>
-                    <div className="event-details">
-                      <p>
-                        <strong>Bank of Kigali</strong> updated profile
-                      </p>
-                      <span>2 mins ago</span>
+                <div className="modern-event-list">
+                  {platformEvents.map((event) => (
+                    <div className="event-item-sleek" key={event.id}>
+                      <div className={`event-avatar-ring ${event.type}`}>
+                        {event.initial}
+                      </div>
+                      <div className="event-text">
+                        <p>
+                          <strong>{event.name}</strong> {event.action}
+                        </p>
+                        <span className="event-timestamp">{event.time}</span>
+                      </div>
+                      <div className="event-badge">Verified</div>
                     </div>
-                    <div className="event-status verified">Success</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bento-card system-controls">
-                <h3>System Terminal</h3>
-                <div className="terminal-ui">
-                  <div className="terminal-line">
-                    <span>$</span> cache_clear --force
-                  </div>
-                  <div className="terminal-line">
-                    <span>$</span> node_verify_all
-                  </div>
-                </div>
-                <div className="control-grid">
-                  <button className="ctrl-btn">Sync Database</button>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* PAGE 2: MANAGEMENT */}
-        {activeTab === "Management" && (
-          <div className="tab-fade-in">
-            <header className="dashboard-header">
-              <h1>User Directory</h1>
-            </header>
-            <div className="user-grid-innovative">
-              {users.map((user) => (
-                <div className="user-card-small" key={user.id}>
-                  <div className={`mini-status ${user.status}`}></div>
-                  <div className="user-avatar-small">{user.name.charAt(0)}</div>
-                  <div className="user-card-info">
-                    <h4>{user.name}</h4>
-                    <p>{user.email}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* BLOCK 2: MANAGEMENT */}
+        {activeTab === "Management" && <UserManagement />}
 
-        {/* PAGE 3: MODERATION */}
-        {activeTab === "Moderation" && (
-          <div className="tab-fade-in">
-            <header className="dashboard-header">
-              <h1>Content Queue</h1>
-            </header>
-            <div className="moderation-stack">
-              {pendingJobs.map((job) => (
-                <div className="mod-card-sleek" key={job.id}>
-                  <div className="mod-info">
-                    <h3>{job.title}</h3>
-                    <p>
-                      {job.company} • {job.date}
-                    </p>
-                  </div>
-                  <div className="mod-btns">
-                    <button className="btn-approve-mini">Approve</button>
-                    <button className="btn-reject-mini">Reject</button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* BLOCK 3: MODERATION (MOVED OUTSIDE OVERVIEW) */}
+        {activeTab === "Moderation" && <JobModeration />}
 
-        {/* PAGE 4: ANALYTICS */}
-        {activeTab === "Analytics" && (
-          <div className="tab-fade-in">
-            <header className="dashboard-header">
-              <h1>Intelligence & Growth</h1>
-            </header>
-            <div className="analytics-grid-innovative">
-              <div className="bento-card span-2">
-                <h3>Platform Growth Trends</h3>
-                <div className="innovative-chart">
-                  <div className="chart-column" style={{ height: "40%" }}></div>
-                  <div className="chart-column" style={{ height: "70%" }}></div>
-                  <div className="chart-column" style={{ height: "90%" }}></div>
-                  <div className="chart-column" style={{ height: "60%" }}></div>
-                </div>
-              </div>
-              <div className="bento-card">
-                <h3>Market Split</h3>
-                <div className="donut-placeholder">65%</div>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* BLOCK 4: ANALYTICS (MOVED OUTSIDE OVERVIEW) */}
+        {activeTab === "Analytics" && <PlatformAnalytics />}
       </main>
     </div>
   );

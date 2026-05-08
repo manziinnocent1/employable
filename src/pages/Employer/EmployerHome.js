@@ -5,6 +5,10 @@ import "./EmployerHome.css";
 const EmployerHome = () => {
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    navigate("/");
+  };
+
   return (
     <div className="employer-page-wrapper">
       <nav className="top-nav">
@@ -27,9 +31,17 @@ const EmployerHome = () => {
               Applicants
             </Link>
           </div>
-          <button className="logout-text-btn" onClick={() => navigate("/")}>
-            Logout
-          </button>
+
+          {/* --- INNOVATIVE LOGOUT BUTTON ADDED HERE --- */}
+          <div className="nav-right-actions">
+            <button
+              className="logout-action-btn-employer"
+              onClick={handleLogout}
+              title="Logout"
+            >
+              <span className="logout-icon">⏻</span>
+            </button>
+          </div>
         </div>
       </nav>
 

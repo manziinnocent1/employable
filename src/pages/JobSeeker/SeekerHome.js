@@ -40,9 +40,17 @@ const SeekerHome = () => {
               Profile
             </Link>
           </div>
-          <button className="logout-text-btn" onClick={handleLogout}>
-            Logout
-          </button>
+
+          {/* --- INNOVATIVE LOGOUT BUTTON ADDED HERE --- */}
+          <div className="nav-right-actions">
+            <button
+              className="logout-action-btn-seeker"
+              onClick={handleLogout}
+              title="Logout"
+            >
+              <span className="logout-icon">⏻</span>
+            </button>
+          </div>
         </div>
       </nav>
 

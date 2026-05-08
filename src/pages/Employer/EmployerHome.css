@@ -1180,3 +1180,40 @@
   background: #3b82f6;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
+
+.nav-right-actions {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.logout-action-btn-employer {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #94a3b8;
+}
+
+.logout-action-btn-employer .logout-icon {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.logout-action-btn-employer:hover {
+  background: #fee2e2; /* Subtle red-tint background */
+  color: #ef4444;      /* High-visibility red */
+  border-color: #fecaca;
+  transform: scale(1.1) rotate(15deg); /* Innovative rotation micro-interaction */
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.12);
+}
+
+.logout-action-btn-employer:active {
+  transform: scale(0.95);
+}

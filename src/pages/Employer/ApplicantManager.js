@@ -53,9 +53,9 @@ const ApplicantManager = () => {
               Applicants
             </Link>
           </div>
-          <button className="logout-text-btn" onClick={() => navigate("/")}>
+          {/* <button className="logout-text-btn" onClick={() => navigate("/")}>
             Logout
-          </button>
+          </button> */}
         </div>
       </nav>
 

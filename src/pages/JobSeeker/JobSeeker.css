@@ -1700,3 +1700,40 @@
 .doc-filesize { font-size: 0.75rem; color: #94a3b8; }
 .download-btn-circle { width: 35px; height: 35px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; cursor: pointer; transition: 0.3s; }
 .download-btn-circle:hover { background: #0f172a; color: white; }
+
+.nav-right-actions {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.logout-action-btn-seeker {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #94a3b8; /* Muted color */
+}
+
+.logout-action-btn-seeker .logout-icon {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.logout-action-btn-seeker:hover {
+  background: #fee2e2; /* Subtle red background */
+  color: #ef4444;      /* Strong red icon */
+  border-color: #fecaca;
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.15);
+}
+
+.logout-action-btn-seeker:active {
+  transform: scale(0.95);
+}
